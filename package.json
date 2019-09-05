@@ -1,0 +1,35 @@
+{
+  "name": "@netflexsites/site-template-vue",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netflex Vue Site Template",
+  "author": "Cathrine Vaage <cathrine@apility.no>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "serve": "netflex serve"
+  },
+  "dependencies": {
+    "@apility/vue-breakpoints": "^1.0.2",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@apility/netflex-cli": "^1.3.6",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "postcss-logical": "^4.0.2",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/mixins/grid';
+
+// Override grid mixins here
+@mixin make-container ($gutter: $grid-gutter-width) {
+  width: 100%;
+  padding-inline: $gutter / 2;
+  margin-inline: auto;
+}
+
+@mixin make-row($gutter: $grid-gutter-width) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: -$gutter / 2;
+}
+
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+  padding-inline: $gutter / 2;
+}

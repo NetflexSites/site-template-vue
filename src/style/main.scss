@@ -1,0 +1,27 @@
+// Import dependencies
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+// Import globals
+@import 'globals/variables';
+
+// Import depency overrides
+@import 'overrides/breakpoints';
+@import 'overrides/grid';
+
+// Import mixins
+@import 'mixins/typography';
+
+// Import scaffolding
+@import 'scaffold/setup';
+@import 'scaffold/Page';
+
+// Import elements
+@import 'elements/blockContent';
+
+// Import components
+
+// Import blocks
+
+// Import templates
+@import 'templates/GenericPage';

@@ -1,0 +1,106 @@
+AddDefaultCharset utf-8
+Options +FollowSymLinks -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTPS} Off
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.+)$ public/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/(public/|index.php)
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ public/index.php?url=$1 [L,NC,QSA]
+
+<IfModule mod_deflate.c>
+
+  <IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    </IfModule>
+  </IfModule>
+
+  <IfModule mod_filter.c>
+    FilterProvider gzip DEFLATE resp=Content-Type $application/atom+xml
+    FilterProvider gzip DEFLATE resp=Content-Type $application/javascript
+    FilterProvider gzip DEFLATE resp=Content-Type $application/json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/ld+json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/manifest+json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/rdf+xml
+    FilterProvider gzip DEFLATE resp=Content-Type $application/rss+xml
+    FilterProvider gzip DEFLATE resp=Content-Type $application/schema+json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/vnd.geo+json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/vnd.ms-fontobject
+    FilterProvider gzip DEFLATE resp=Content-Type $application/x-font-ttf
+    FilterProvider gzip DEFLATE resp=Content-Type $application/x-javascript
+    FilterProvider gzip DEFLATE resp=Content-Type $application/x-web-app-manifest+json
+    FilterProvider gzip DEFLATE resp=Content-Type $application/xhtml+xml
+    FilterProvider gzip DEFLATE resp=Content-Type $application/xml
+    FilterProvider gzip DEFLATE resp=Content-Type $font/eot
+    FilterProvider gzip DEFLATE resp=Content-Type $font/opentype
+    FilterProvider gzip DEFLATE resp=Content-Type $image/bmp
+    FilterProvider gzip DEFLATE resp=Content-Type $image/svg+xml
+    FilterProvider gzip DEFLATE resp=Content-Type $image/vnd.microsoft.icon
+    FilterProvider gzip DEFLATE resp=Content-Type $image/x-icon
+    FilterProvider gzip DEFLATE resp=Content-Type $text/cache-manifest
+    FilterProvider gzip DEFLATE resp=Content-Type $text/css
+    FilterProvider gzip DEFLATE resp=Content-Type $text/html
+    FilterProvider gzip DEFLATE resp=Content-Type $text/javascript
+    FilterProvider gzip DEFLATE resp=Content-Type $text/plain
+    FilterProvider gzip DEFLATE resp=Content-Type $text/vcard
+    FilterProvider gzip DEFLATE resp=Content-Type $text/vnd.rim.location.xloc
+    FilterProvider gzip DEFLATE resp=Content-Type $text/vtt
+    FilterProvider gzip DEFLATE resp=Content-Type $text/x-component
+    FilterProvider gzip DEFLATE resp=Content-Type $text/x-cross-domain-policy
+    FilterProvider gzip DEFLATE resp=Content-Type $text/x
+  </IfModule>
+
+  <IfModule mod_mime.c>
+    AddEncoding gzip svgz
+  </IfModule>
+
+  <IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access 1 year"
+    ExpiresByType image/jpeg "access 1 year"
+    ExpiresByType image/gif "access 1 year"
+    ExpiresByType image/png "access 1 year"
+    ExpiresByType image/svg+xml "access 1 year"
+    ExpiresByType text/css "access 1 month"
+    ExpiresByType text/html "access 1 month"
+    ExpiresByType application/pdf "access 1 month"
+    ExpiresByType text/x-javascript "access 1 month"
+    ExpiresByType text/javascript "access 1 month"
+    ExpiresByType application/javascript "access 1 month"
+    ExpiresByType application/x-shockwave-flash "access 1 month"
+    ExpiresByType image/x-icon "access 1 year"
+    ExpiresDefault "access 1 month"
+  </IfModule>
+
+</IfModule>

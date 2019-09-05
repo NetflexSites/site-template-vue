@@ -1,0 +1,13 @@
+.Page {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1 0 auto;
+
+    display: flex;
+    flex-direction: column;
+  }
+}

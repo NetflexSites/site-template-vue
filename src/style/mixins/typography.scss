@@ -1,0 +1,59 @@
+@mixin headingBase() {
+  font-weight: 700;
+}
+
+@mixin heading1() {
+  @include headingBase();
+
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+@mixin heading2() {
+  @include headingBase();
+
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+}
+
+@mixin heading3() {
+  @include headingBase();
+
+  font-size: 2.25rem;
+  line-height: 3rem;
+}
+
+@mixin heading4() {
+  @include headingBase();
+
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+@mixin heading5() {
+  @include headingBase();
+
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin heading6() {
+  @include headingBase();
+
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+@mixin paragraph() {
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+@mixin anchor() {
+  @include paragraph();
+}
+
+@mixin listItem() {
+  @include paragraph();
+}
+
