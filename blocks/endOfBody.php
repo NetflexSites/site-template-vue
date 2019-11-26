@@ -1,9 +1,4 @@
-<?php
-
-use Helpers\WebpackAssets;
-
-?>
-<?= WebpackAssets::getInstance()->getBodyAssets(); ?>
+<?= NF::$webpackAssets->getBodyAssets(); ?>
 
 <?= get_codeinject_bodyclose(); ?>
 
