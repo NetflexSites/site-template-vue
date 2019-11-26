@@ -16,6 +16,7 @@ yarn-error.log
 /config/api.json
 /config/watch.json
 /config/deploy.json
+/config/webpackManifest.json
 
 ### Misc ###
 .env
