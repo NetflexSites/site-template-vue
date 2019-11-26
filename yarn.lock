@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@apility/netflex-cli@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@apility/netflex-cli/-/netflex-cli-1.3.6.tgz#b7d1908218a9fc04b3038b56cf43c5a570d11752"
-  integrity sha512-j6N5dRK7eZlwIIgHxnrl39Krx0TrBQBcpOp8/C+O8qG1FUBcYkK9oMCjodQzjgyafbRFYlR5ki2CnWCb0T9zFw==
+"@apility/netflex-cli@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@apility/netflex-cli/-/netflex-cli-1.4.1.tgz#48413d6d831ab56aedd84f3914b30dc409f98926"
+  integrity sha512-2V5Mne0PKFZoATayljwaMpqjEE4UAc5AZpG9wcF1HqWrWiSfyymAt88xAPjLB2lasiQIUfRCHKkQN7GXZaMjIg==
   dependencies:
     axios "^0.18.0"
-    cli-select "^1.0.2"
+    cli-select "1.0.2"
     colors "^1.3.3"
     command-exists "^1.2.8"
     dedent-js "^1.0.1"
@@ -2135,12 +2135,12 @@ cli-highlight@^2.1.0:
     parse5 "^4.0.0"
     yargs "^13.0.0"
 
-cli-select@^1.0.2:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/cli-select/-/cli-select-1.1.0.tgz#3cc517672e8a41b8731ef39061b5b823472fd998"
-  integrity sha512-YGxPS23lcLP/JQ1A0oc9B1Y2JAjeiVjlMiLUy8Z/Zrc6c/Za+WjxMw3v4mOybrAjCCg1egsUdyloNzIsJV6R5g==
+cli-select@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cli-select/-/cli-select-1.0.2.tgz#185c9246b018f0fa014fce2bdeaf4301bbdd552b"
+  integrity sha512-V3rne+3zFQcwcI/5QpxnQdovY7sjyG5NsvMBcWI+EQDHLeMQ9yLm7AFXW1iLtUUXKjEIxg03ZCMNbQFvyzoSTQ==
   dependencies:
-    ansi-escapes "^3.2.0"
+    ansi-escapes "^3.0.0"
 
 cli-spinners@^2.0.0:
   version "2.2.0"
